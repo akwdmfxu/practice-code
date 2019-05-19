@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Default Definition -->
+	<definition name="default-definition" template="/views/tiles/layout/defaultLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/views/tiles/template/defaultHeader.jsp" />
+		<put-attribute name="left" value="/views/tiles/template/defaultLeft.jsp" />
+		<put-attribute name="container" value="" />
+		<put-attribute name="footer" value="/views/tiles/template/defaultFooter.jsp" />
+	</definition>
+
+	<!-- Empty Definition -->
+	<definition name="empty" template="/views/tiles/layout/emptyLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="container" value="" />
+	</definition>
+
+	<!-- Empty -->
+	<definition name="empty/*" extends="empty">
+		<put-attribute name="title" value="DASHBOARD" />
+		<put-attribute name="container" value="/views/pages/empty/{1}.jsp" />
+	</definition>
+	
+	<!-- Login -->
+	<!-- <definition name="a/login*" extends="empty">
+		<put-attribute name="title" value="DASHBOARD ::: LOGIN" />
+		<put-attribute name="container" value="/views/pages/{1}.jsp" />
+	</definition> -->
+
+	<!-- Sample -->
+	<definition name="sample/*" extends="empty">
+		<put-attribute name="title" value="DASHBOARD ::: SAMPLE" />
+		<put-attribute name="container" value="/views/pages/sample/{1}.jsp" />
+	</definition>
+	
+	<!-- Empty ERROR -->
+	<definition name="error" extends="empty">
+		<put-attribute name="title" value="DASHBOARD ::: ERROR" />
+		<put-attribute name="container" value="/views/pages/error/error.jsp" />
+	</definition>
+
+	<!-- Default -->
+	<definition name="*/*" extends="default-definition">
+		<put-attribute name="title" value="DASHBOARD" />
+		<put-attribute name="container" value="/views/pages/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- Default -->
+	<definition name="*" extends="default-definition">
+		<put-attribute name="title" value="DASHBOARD" />
+		<put-attribute name="container" value="/views/pages/{1}.jsp" />
+	</definition>
+
+</tiles-definitions>
