@@ -19,7 +19,7 @@ public class HomeController {
 	public String index(HttpServletRequest request) {
 	
 		LOGGER.info("index");
-		
+		 
 		return "index";
 	}
 	
