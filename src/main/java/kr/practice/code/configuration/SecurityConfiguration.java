@@ -102,7 +102,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	//ajax session time check filter
     	http.addFilterAfter(new AjaxSessionTimeoutFilter(), ExceptionTranslationFilter.class);
     	http.headers().addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)).and()
-//    	.authorizeRequests().anyRequest().permitAll()
     	.authorizeRequests()
     	.antMatchers("/test").permitAll()
     	.antMatchers("/login*").permitAll()
