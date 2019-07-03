@@ -24,7 +24,6 @@ import kr.practice.code.common.security.AuthenticationFailureImpl;
 import kr.practice.code.common.security.AuthenticationLogoutSuccessImpl;
 import kr.practice.code.common.security.AuthenticationSuccessImpl;
 import kr.practice.code.common.security.UserManager;
-import kr.practice.code.util.security.SHA256;
 import kr.practice.code.util.security.SHA512;
 
 @Configuration
