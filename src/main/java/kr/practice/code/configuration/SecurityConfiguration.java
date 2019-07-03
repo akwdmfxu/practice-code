@@ -17,22 +17,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
-import org.springframework.security.web.access.ExceptionTranslationFilter;
-import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import kr.practice.code.common.filter.AjaxSessionTimeoutFilter;
-import kr.practice.code.common.security.AuthenticationFailureImpl;
-import kr.practice.code.common.security.AuthenticationLogoutSuccessImpl;
-import kr.practice.code.common.security.AuthenticationSuccessImpl;
 import kr.practice.code.common.security.UserManager;
-import kr.practice.code.util.security.SHA256;
-import kr.practice.code.util.security.SHA512;
 
 @Configuration
 @EnableWebSecurity
