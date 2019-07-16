@@ -28,6 +28,9 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -254,12 +257,26 @@ public class WebConfiguration implements WebMvcConfigurer {
 		return objectMapper;
 	}
 	
+	private final int MAX_SIZE = 10 * 1024 * 1024;
+	
+//	옛날 버전 filesize 설정하기
+//	@Bean
+//	public MultipartConfigElement multipartConfigElement() {
+//		MultipartConfigFactory factory = new MultipartConfigFactory();
+//		factory.setMaxFileSize("10MB");
+//		factory.setMaxRequestSize("10MB");
+//		return factory.createMultipartConfig();
+//	}
+	
+//	filesize 설정하기
 	@Bean
-    MultipartConfigElement multipartConfigElement() {
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setMaxFileSize("10MB");
-        factory.setMaxRequestSize("10MB");
-        return factory.createMultipartConfig();
-    }
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(MAX_SIZE); // 10MB
+		multipartResolver.setMaxUploadSizePerFile(MAX_SIZE); // 10MB
+		multipartResolver.setMaxInMemorySize(0);
+		return multipartResolver;
+	}
+	
 }
 
